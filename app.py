@@ -27,6 +27,7 @@ def open_whatsapp():
     root.destroy()  # Close the app after opening WhatsApp
    
 root = tk.Tk()
+vcmd = (root.register(lambda P: str.isdigit(P) or P == ""), '%P')
 root.title("WA Chat")
 
 # Center window app based on display
@@ -47,7 +48,7 @@ root.attributes("-toolwindow", True)  # Remove minimize and maximize buttons
 label = tk.Label(root, text="Enter the phone number\n(starting with 08 or 62):", wraplength=200)
 label.pack(pady=10)
 
-entry = tk.Entry(root, width=30, justify='center')
+entry = tk.Entry(root, width=30, justify='center', validate='key', validatecommand=vcmd)
 entry.pack(pady=5)
 entry.focus()  # Set focus to the entry widget
 
